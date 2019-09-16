@@ -1,0 +1,2 @@
+# zen
+solve zen game
