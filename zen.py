@@ -1,6 +1,7 @@
 
 from termcolor import colored, cprint
 from random import *
+from predefined_shapes import *
 
 colors = {
     0:'grey',
@@ -27,108 +28,29 @@ back_colors = {
 
 #class Piece
 
-def solution():
-    T_flipy = [
-            [1,0,1],
-            [0,0,0],
-            ]
-    Z_flipx = [
-            [1,0,0],
-            [0,0,1],
-            ]
-    T_90 = [
-            [1,0],
-            [0,0],
-            [1,0],
-            ]
-    L_flipx = [
-            [1,0],
-            [1,0],
-            [0,0],
-            ]
-    L_flipy = [
-            [0,0],
-            [0,1],
-            [0,1],
-            ]
-    L = [
-            [0,1],
-            [0,1],
-            [0,0],
-            ]
-    L_m90 = [
-            [1,1,0],
-            [0,0,0],
-            ]
-    L_90 = [
-            [0,0,0],
-            [0,1,1],
-            ]
-    L_m90_flipy = [
-            [0,0,0],
-            [1,1,0],
-            ]
-    T_m90 = [
-            [0,1],
-            [0,0],
-            [0,1],
-            ]
-    Ls_flipx = [
-            [1,0],
-            [0,0],
-            ]
-    Ls_flipy = [
-            [0,0],
-            [0,1],
-            ]
-    Ls_flipxy = [
-            [0,0],
-            [1,0],
-            ]
-    T = [
-            [0,0,0],
-            [1,0,1],
-            ]
-    I_2_1 = [
-            [0],
-            [0],
-            ]
-    I_3_1 = [
-            [0],
-            [0],
-            [0],
-            ]
-    _ = [[0]]
-    __ = [
-            [0,0],
-            ]
-    ___ = [
-            [0,0,0],
-            ]
-    I_3_2 =[
-            [0,0],
-            [0,0],
-            [0,0],
-            ]
-    myboard = [
-            [1,1,1,1,1,1,1,1],
-            [1,1,1,1,1,1,1,1],
-            [1,1,1,1,1,1,0,0],
-            [1,1,1,1,1,1,0,0],
-            [1,1,1,1,0,0,0,0],
-            [1,1,0,0,0,0,0,0],
-            [1,1,0,0,0,0,0,0],
-            ]
+def solution(b_file, s_file):
+    myboard = []
+    with open(b_file) as f:
+        lines = f.read().splitlines()
+    for l in lines:
+        myrow = list(map(int, l.split()))
+        myboard.append(myrow)
     #myboard = [
-    #        [0,0,1,1,0,0,0,0],
-    #        [0,1,1,1,0,0,0,0],
-    #        [0,0,1,1,1,0,0,0],
-    #        [0,0,0,0,0,0,0,0],
-    #        [0,0,0,0,0,0,0,0],
-    #        [0,0,0,0,0,0,0,0],
+    #        [1,1,1,1,1,1,1,1],
+    #        [1,1,1,1,1,1,1,1],
+    #        [1,1,1,1,1,1,0,0],
+    #        [1,1,1,1,1,1,0,0],
+    #        [1,1,1,1,0,0,0,0],
+    #        [1,1,0,0,0,0,0,0],
+    #        [1,1,0,0,0,0,0,0],
     #        ]
-    #pieces = [T_flipy, Z_flipx, T_90, L_flipx, L_flipy, L, T_m90, __, Ls_flipx, Ls_flipy]
-    pieces = [Ls_flipxy, L_m90, L_m90_flipy, L_flipx, I_3_1, L_90, L_flipy, I_3_1, T_m90, ___]#, T_90, L_flipx, L_flipy, L, T_m90, __, Ls_flipx, Ls_flipy]
+
+    pieces = []
+    with open(s_file) as f:
+        lines = f.read().splitlines()
+    for s in lines:
+        pieces.append(eval(s))
+    #pieces = [Ls_flipxy, L_m90, L_m90_flipy, L_flipx, I_3_1, L_90, L_flipy, I_3_1, T_m90, ___]#, T_90, L_flipx, L_flipy, L, T_m90, __, Ls_flipx, Ls_flipy]
     #shuffle(pieces)
     #print(myboard)
     #print(pieces)
@@ -182,8 +104,29 @@ def solution():
             print()
         return
 
+    def generate_invalid(m,n,s):
+        return
+
+    def get_pattern(myboard):
+        #for i in range(M):
+        #    for j in range(N):
+        #        if myboard[i][j]==1:
+        return
+
+
+    def check_bottleneck(myboard):
+        #get_pattern(myboard)
+        return True
+
     used = set()
+    it = [0]
     def make_board(i,j):
+        it[0] += 1
+        if it[0]%1000000==0: print(f'Iteration {it[0]}')
+        if it[0]%10000000==0: print_board(myboard)
+        
+        if not check_bottleneck(myboard): return False
+
         if i==M:
             #print('moved to last')
             #print(used)
@@ -221,6 +164,7 @@ def solution():
     return make_board(0,0)
 
 if __name__ == '__main__':
-    solved = solution()
+    import sys
+    solved = solution(sys.argv[1],sys.argv[2])
     print(solved)
 
