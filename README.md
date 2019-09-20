@@ -10,10 +10,4 @@ e.g.:
   python3 zen.py board.dat shapes.dat
 # Showcase
 Example of board.dat:
-1 1 1 1 1 1 1
-1 1 1 1 1 1 1
-1 1 1 0 1 1 1
-1 1 0 0 0 1 1
-1 1 1 0 1 1 1
-1 1 1 1 1 1 1
-1 1 1 1 1 1 1
+
