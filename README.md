@@ -28,3 +28,4 @@ Example of solver results:
 # Known Issues
 1. 45 degree shapes are currently not supported (Should be easy to add this feature)
 2. Runtime is not optimized yet!
+3. Some abut pieces may have same color due limitation of terminal color choice
