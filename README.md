@@ -4,7 +4,7 @@ solve zen game
   1. python3
   2. pip3 install -r reqirements.txt
 # Run
-python3 zen.py <your board input> <your shape input>
+python3 zen.py \<your board input\> \<your shape input\>
 
 e.g.:
   python3 zen.py board.dat shapes.dat
